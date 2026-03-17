@@ -837,7 +837,14 @@ body.dark .site-nav {
 #articles-list a:hover {
   text-decoration: underline;
 }
+pre {
+    direction: ltr;
+    text-align: left;
+}
 
+pre code {
+    direction: ltr;
+}
 
 
 

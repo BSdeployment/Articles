@@ -8,7 +8,7 @@ description: "Technical articles on .NET, Python, AI, cybersecurity, and develop
 
 <div class="article-grid" id="articles-list">
   {% for post in site.posts %}
-  <article class="article-card" data-title="{{ post.title | downcase }}">
+  <article class="article-card" dir="{{ post.direction | default: 'ltr' }}" data-title="{{ post.title | downcase }}">
     
     {% if post.categories.first %}
     <span class="article-card__category">{{ post.categories.first }}</span>

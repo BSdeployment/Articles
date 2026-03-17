@@ -59,7 +59,7 @@ layout: default
     </div>
     <div class="article-grid">
       {% for post in site.posts limit:6 %}
-      <article class="article-card">
+      <article class="article-card" dir="{{ post.direction | default: 'ltr' }}">
         {% if post.categories.first %}
         <span class="article-card__category">{{ post.categories.first }}</span>
         {% endif %}

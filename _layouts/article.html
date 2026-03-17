@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class="article">
+<article class="article" dir="{{ page.direction | default: 'ltr' }}">
   <header class="article__header">
     <div class="container container--narrow">
       {% if page.categories.first %}
@@ -22,7 +22,7 @@ layout: default
   </header>
 
   <div class="article__body">
-    <div class="container container--narrow">
+    <div class="container container--narrow" dir="{{ page.direction | default: 'ltr' }}">
       {{ content }}
     </div>
   </div>
