@@ -1,0 +1,13 @@
+<nav class="site-nav" id="site-nav" aria-label="Main navigation">
+  <ul class="site-nav__list">
+    <li class="site-nav__item">
+      <a href="{{ '/' | relative_url }}" class="site-nav__link {% if page.url == '/' %}site-nav__link--active{% endif %}">Home</a>
+    </li>
+    <li class="site-nav__item">
+      <a href="{{ '/articles' | relative_url }}" class="site-nav__link {% if page.url == '/articles/' %}site-nav__link--active{% endif %}">Articles</a>
+    </li>
+    <li class="site-nav__item">
+      <a href="{{ '/about' | relative_url }}" class="site-nav__link {% if page.url == '/about/' %}site-nav__link--active{% endif %}">About &amp; Contact</a>
+    </li>
+  </ul>
+</nav>

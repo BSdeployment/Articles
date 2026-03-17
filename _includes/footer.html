@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="{{ '/' | relative_url }}" class="site-footer__logo">Bs DotNet</a>
+      <p class="site-footer__desc">Technology, AI, cybersecurity, and software development.</p>
+    </div>
+
+    <div class="site-footer__links">
+      <h4 class="site-footer__heading">Links</h4>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/articles' | relative_url }}">Articles</a></li>
+        <li><a href="{{ '/about' | relative_url }}">About & Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__social">
+      <h4 class="site-footer__heading">Connect</h4>
+      <ul>
+        {% if site.github_username %}
+        <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
+        {% endif %}
+        {% if site.twitter_username %}
+        <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
+        {% endif %}
+        {% if site.linkedin_username %}
+        <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container">
+      <p>&copy; {{ 'now' | date: "%Y" }} Bs DotNet. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bs DotNet Blog</title>
+ <link rel="icon" type="image/x-icon" href="/Articles/assets/faviicon.png">
+  <meta name="description" content="Bs DotNet — Exploring technology, artificial intelligence, cybersecurity, and modern software development.">
+  <link rel="canonical" href="http://localhost:4000/Articles/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/Articles/assets/css/custom.css">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Bs DotNet</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Home" />
+<meta name="author" content="Bs DotNet" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Bs DotNet — Exploring technology, artificial intelligence, cybersecurity, and modern software development." />
+<meta property="og:description" content="Bs DotNet — Exploring technology, artificial intelligence, cybersecurity, and modern software development." />
+<link rel="canonical" href="http://localhost:4000/Articles/" />
+<meta property="og:url" content="http://localhost:4000/Articles/" />
+<meta property="og:site_name" content="Bs DotNet" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Bs DotNet"},"description":"Bs DotNet — Exploring technology, artificial intelligence, cybersecurity, and modern software development.","headline":"Home","name":"Bs DotNet","url":"http://localhost:4000/Articles/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+ <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark');
+      }
+    })();
+  </script>
+
+
+
+  <header class="site-header" id="site-header">
+  <div class="container site-header__inner">
+    <a href="/Articles/" class="site-header__logo">
+    <img src="/Articles/assets/logosite.png" alt="logo site">
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+  <ul class="site-nav__list">
+    <li class="site-nav__item">
+      <a href="/Articles/" class="site-nav__link site-nav__link--active">Home</a>
+    </li>
+    <li class="site-nav__item">
+      <a href="/Articles/articles" class="site-nav__link ">Articles</a>
+    </li>
+    <li class="site-nav__item">
+      <a href="/Articles/about" class="site-nav__link ">About &amp; Contact</a>
+    </li>
+  </ul>
+</nav>
+
+     <div class="site-header__actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="site-header__menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Sticky header shadow
+  window.addEventListener('scroll', function() {
+    var header = document.getElementById('site-header');
+    if (window.scrollY > 10) {
+      header.classList.add('site-header--scrolled');
+    } else {
+      header.classList.remove('site-header--scrolled');
+    }
+  });
+
+  // Dark mode toggle
+  var themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark');
+      var isDark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  }
+
+  // Mobile menu toggle
+  var toggle = document.getElementById('menu-toggle');
+  var nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function() {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('site-nav--open');
+      this.classList.toggle('site-header__menu-toggle--active');
+    });
+  }
+</script>
+
+  <main class="site-main">
+    <section class="hero">
+  <div class="container">
+    <h1 class="hero__title">Bs DotNet</h1>
+
+   
+<p class="hero__typing" style="display: block;margin: 70px auto;">
+  <span id="typing-icon"></span>
+  <span id="typing-text"></span>
+</p>
+
+
+
+
+    <p class="hero__tagline">Exploring technology, artificial intelligence, cybersecurity, and modern software development.</p>
+    <div class="hero__actions">
+      <a href="/Articles/articles" class="btn btn--primary">Read Articles</a>
+      <a href="/Articles/about" class="btn btn--outline">About Me</a>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <h2 class="section-title">Focus Areas</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="category-card__icon">🤖</div>
+        <h3 class="category-card__title">Artificial Intelligence</h3>
+        <p class="category-card__desc">Machine learning, deep learning, LLMs, and practical AI applications for developers.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-card__icon">🔒</div>
+        <h3 class="category-card__title">Cybersecurity</h3>
+        <p class="category-card__desc">Security research, vulnerability analysis, defensive strategies, and secure coding practices.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-card__icon">💻</div>
+        <h3 class="category-card__title">Software Development</h3>
+        <p class="category-card__desc">.NET, Python, architecture patterns, and modern development workflows.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-card__icon">🛠️</div>
+        <h3 class="category-card__title">Tools &amp; Research</h3>
+        <p class="category-card__desc">Developer tools, technical research, productivity tips, and open-source projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="latest-articles">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Articles</h2>
+      <a href="/Articles/articles" class="section-link">View all →</a>
+    </div>
+    <div class="article-grid">
+      
+      <article class="article-card">
+        
+        <span class="article-card__category">dotnet</span>
+        
+        <h3 class="article-card__title">
+          <a href="/Articles/articles/getting-started-with-dotnet-8/">Getting Started with .NET 8: What's New and Why It Matters</a>
+        </h3>
+        <p class="article-card__excerpt">.NET 8 represents a major milestone in the evolution of the .NET platform. With significant performance improvements, enhanced native AOT compilation, and a host of...</p>
+        <div class="article-card__meta">
+          <time datetime="2026-03-08T00:00:00+02:00">March 08, 2026</time>
+          <a href="/Articles/articles/getting-started-with-dotnet-8/" class="article-card__link">Read more →</a>
+        </div>
+      </article>
+      
+      <article class="article-card">
+        
+        <span class="article-card__category">cybersecurity</span>
+        
+        <h3 class="article-card__title">
+          <a href="/Articles/articles/essential-security-headers-web-developers/">Essential Security Headers Every Web Developer Should Implement</a>
+        </h3>
+        <p class="article-card__excerpt">Security headers are one of the simplest yet most overlooked defenses in web application security. A few lines of configuration can protect your users from...</p>
+        <div class="article-card__meta">
+          <time datetime="2026-03-01T00:00:00+02:00">March 01, 2026</time>
+          <a href="/Articles/articles/essential-security-headers-web-developers/" class="article-card__link">Read more →</a>
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+
+const typingData = [
+
+{ icon: "🔒", text: "Cybersecurity & Information Security" },
+
+{ icon: "🤖", text: "Artificial Intelligence Research" },
+
+{ icon: "💻", text: "Software Engineering & Development" },
+
+{ icon: "🚀", text: "Emerging Technologies" },
+
+{ icon: "🧠", text: "Malware Analysis & Reverse Engineering" },
+
+{ icon: "📚", text: "Deep Technical Articles" }
+
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const textEl = document.getElementById("typing-text");
+const iconEl = document.getElementById("typing-icon");
+
+function typeEffect(){
+
+  const current = typingData[wordIndex];
+
+  iconEl.textContent = current.icon;
+
+  if(deleting){
+    charIndex--;
+  }else{
+    charIndex++;
+  }
+
+  textEl.textContent = current.text.substring(0,charIndex);
+
+  if(!deleting && charIndex === current.text.length){
+
+    textEl.classList.add("fade-out");
+
+    setTimeout(()=>{
+      textEl.classList.remove("fade-out");
+      deleting = true;
+      typeEffect();
+    },500);
+
+    return;
+  }
+
+  if(deleting && charIndex === 0){
+    deleting = false;
+    wordIndex = (wordIndex + 1) % typingData.length;
+  }
+
+  setTimeout(typeEffect, deleting ? 45 : 80);
+}
+
+typeEffect();
+
+</script>
+  </main>
+  <footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/Articles/" class="site-footer__logo">Bs DotNet</a>
+      <p class="site-footer__desc">Technology, AI, cybersecurity, and software development.</p>
+    </div>
+
+    <div class="site-footer__links">
+      <h4 class="site-footer__heading">Links</h4>
+      <ul>
+        <li><a href="/Articles/">Home</a></li>
+        <li><a href="/Articles/articles">Articles</a></li>
+        <li><a href="/Articles/about">About & Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__social">
+      <h4 class="site-footer__heading">Connect</h4>
+      <ul>
+        
+        <li><a href="https://github.com/https://github.com/BSdeployment" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/bs_dotnet" target="_blank" rel="noopener">Twitter</a></li>
+        
+        
+        <li><a href="https://linkedin.com/in/bs-dotnet" target="_blank" rel="noopener">LinkedIn</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container">
+      <p>&copy; 2026 Bs DotNet. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero__title">Bs DotNet</h1>
+
+   
+<p class="hero__typing" style="display: block;margin: 70px auto;">
+  <span id="typing-icon"></span>
+  <span id="typing-text"></span>
+</p>
+
+
+
+
+    <p class="hero__tagline">Exploring technology, artificial intelligence, cybersecurity, and modern software development.</p>
+    <div class="hero__actions">
+      <a href="{{ '/articles' | relative_url }}" class="btn btn--primary">Read Articles</a>
+      <a href="{{ '/about' | relative_url }}" class="btn btn--outline">About Me</a>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <h2 class="section-title">Focus Areas</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="category-card__icon">🤖</div>
+        <h3 class="category-card__title">Artificial Intelligence</h3>
+        <p class="category-card__desc">Machine learning, deep learning, LLMs, and practical AI applications for developers.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-card__icon">🔒</div>
+        <h3 class="category-card__title">Cybersecurity</h3>
+        <p class="category-card__desc">Security research, vulnerability analysis, defensive strategies, and secure coding practices.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-card__icon">💻</div>
+        <h3 class="category-card__title">Software Development</h3>
+        <p class="category-card__desc">.NET, Python, architecture patterns, and modern development workflows.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-card__icon">🛠️</div>
+        <h3 class="category-card__title">Tools &amp; Research</h3>
+        <p class="category-card__desc">Developer tools, technical research, productivity tips, and open-source projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="latest-articles">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Articles</h2>
+      <a href="{{ '/articles' | relative_url }}" class="section-link">View all →</a>
+    </div>
+    <div class="article-grid">
+      {% for post in site.posts limit:6 %}
+      <article class="article-card">
+        {% if post.categories.first %}
+        <span class="article-card__category">{{ post.categories.first }}</span>
+        {% endif %}
+        <h3 class="article-card__title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+        <div class="article-card__meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          <a href="{{ post.url | relative_url }}" class="article-card__link">Read more →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+
+const typingData = [
+
+{ icon: "🔒", text: "Cybersecurity & Information Security" },
+
+{ icon: "🤖", text: "Artificial Intelligence Research" },
+
+{ icon: "💻", text: "Software Engineering & Development" },
+
+{ icon: "🚀", text: "Emerging Technologies" },
+
+{ icon: "🧠", text: "Malware Analysis & Reverse Engineering" },
+
+{ icon: "📚", text: "Deep Technical Articles" }
+
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const textEl = document.getElementById("typing-text");
+const iconEl = document.getElementById("typing-icon");
+
+function typeEffect(){
+
+  const current = typingData[wordIndex];
+
+  iconEl.textContent = current.icon;
+
+  if(deleting){
+    charIndex--;
+  }else{
+    charIndex++;
+  }
+
+  textEl.textContent = current.text.substring(0,charIndex);
+
+  if(!deleting && charIndex === current.text.length){
+
+    textEl.classList.add("fade-out");
+
+    setTimeout(()=>{
+      textEl.classList.remove("fade-out");
+      deleting = true;
+      typeEffect();
+    },500);
+
+    return;
+  }
+
+  if(deleting && charIndex === 0){
+    deleting = false;
+    wordIndex = (wordIndex + 1) % typingData.length;
+  }
+
+  setTimeout(typeEffect, deleting ? 45 : 80);
+}
+
+typeEffect();
+
+</script>

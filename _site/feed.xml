@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/Articles/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Articles/" rel="alternate" type="text/html" /><updated>2026-03-17T11:06:20+02:00</updated><id>http://localhost:4000/Articles/feed.xml</id><title type="html">Bs DotNet</title><subtitle>Exploring technology, artificial intelligence, cybersecurity, and modern software development.</subtitle><author><name>Bs DotNet</name></author><entry><title type="html">Getting Started with .NET 8: What’s New and Why It Matters</title><link href="http://localhost:4000/Articles/articles/getting-started-with-dotnet-8/" rel="alternate" type="text/html" title="Getting Started with .NET 8: What’s New and Why It Matters" /><published>2026-03-08T00:00:00+02:00</published><updated>2026-03-08T00:00:00+02:00</updated><id>http://localhost:4000/Articles/articles/getting-started-with-dotnet-8</id><content type="html" xml:base="http://localhost:4000/Articles/articles/getting-started-with-dotnet-8/"><![CDATA[<p>.NET 8 represents a major milestone in the evolution of the .NET platform. With significant performance improvements, enhanced native AOT compilation, and a host of new APIs, this release solidifies .NET as one of the most versatile and performant development frameworks available today.</p>
+
+<h2 id="why-net-8-matters">Why .NET 8 Matters</h2>
+
+<p>Every Long-Term Support (LTS) release of .NET brings stability and a commitment to three years of support. But .NET 8 goes beyond the usual incremental improvements — it fundamentally changes how we think about building and deploying applications.</p>
+
+<h3 id="performance-at-the-core">Performance at the Core</h3>
+
+<p>The .NET team has made over <strong>1,800 performance-related pull requests</strong> in this release cycle. Some highlights include:</p>
+
+<ul>
+  <li><strong>Dynamic PGO improvements</strong> — Profile-Guided Optimization is now enabled by default, delivering up to 20% throughput improvement for many workloads.</li>
+  <li><strong>Reduced memory allocation</strong> — Key framework methods have been optimized to produce fewer allocations.</li>
+  <li><strong>SIMD enhancements</strong> — Better vectorization support across more CPU architectures.</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Example: Using the new SearchValues API for fast character matching</span>
+<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">SearchValues</span><span class="p">&lt;</span><span class="kt">char</span><span class="p">&gt;</span> <span class="n">s_vowels</span> <span class="p">=</span> <span class="n">SearchValues</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"aeiouAEIOU"</span><span class="p">);</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">CountVowels</span><span class="p">(</span><span class="n">ReadOnlySpan</span><span class="p">&lt;</span><span class="kt">char</span><span class="p">&gt;</span> <span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="n">index</span> <span class="p">=</span> <span class="n">text</span><span class="p">.</span><span class="nf">IndexOfAny</span><span class="p">(</span><span class="n">s_vowels</span><span class="p">))</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">count</span><span class="p">++;</span>
+        <span class="n">text</span> <span class="p">=</span> <span class="n">text</span><span class="p">[(</span><span class="n">index</span> <span class="p">+</span> <span class="m">1</span><span class="p">)..];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="native-aot-production-ready">Native AOT: Production Ready</h2>
+
+<p>Ahead-of-Time compilation has graduated from experimental to fully supported for ASP.NET Core applications. This means:</p>
+
+<ul>
+  <li><strong>Instant startup times</strong> — No JIT compilation delay</li>
+  <li><strong>Smaller deployment size</strong> — Self-contained apps as small as 10MB</li>
+  <li><strong>Reduced memory footprint</strong> — Ideal for containerized and serverless environments</li>
+</ul>
+
+<blockquote>
+  <p>Native AOT is particularly compelling for microservices architectures where cold start times directly impact user experience.</p>
+</blockquote>
+
+<h2 id="new-apis-worth-exploring">New APIs Worth Exploring</h2>
+
+<h3 id="time-abstraction">Time Abstraction</h3>
+
+<p>The new <code class="language-plaintext highlighter-rouge">TimeProvider</code> class makes time-dependent code testable:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">CacheService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">TimeProvider</span> <span class="n">_timeProvider</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">CacheService</span><span class="p">(</span><span class="n">TimeProvider</span> <span class="n">timeProvider</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_timeProvider</span> <span class="p">=</span> <span class="n">timeProvider</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsExpired</span><span class="p">(</span><span class="n">DateTimeOffset</span> <span class="n">expiresAt</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_timeProvider</span><span class="p">.</span><span class="nf">GetUtcNow</span><span class="p">()</span> <span class="p">&gt;=</span> <span class="n">expiresAt</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="keyed-dependency-injection">Keyed Dependency Injection</h3>
+
+<p>Register and resolve services by key — a long-requested feature:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddKeyedSingleton</span><span class="p">&lt;</span><span class="n">ICache</span><span class="p">,</span> <span class="n">RedisCache</span><span class="p">&gt;(</span><span class="s">"redis"</span><span class="p">);</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddKeyedSingleton</span><span class="p">&lt;</span><span class="n">ICache</span><span class="p">,</span> <span class="n">MemoryCache</span><span class="p">&gt;(</span><span class="s">"memory"</span><span class="p">);</span>
+
+<span class="c1">// Resolve by key</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyService</span><span class="p">([</span><span class="nf">FromKeyedServices</span><span class="p">(</span><span class="s">"redis"</span><span class="p">)]</span> <span class="n">ICache</span> <span class="n">cache</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Uses RedisCache</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="what-this-means-for-your-projects">What This Means for Your Projects</h2>
+
+<p>If you’re starting a new project, .NET 8 is the clear choice. For existing applications, the migration path from .NET 6 or 7 is straightforward, and the performance gains alone justify the effort.</p>
+
+<h3 id="recommended-next-steps">Recommended Next Steps</h3>
+
+<ol>
+  <li><strong>Update your global.json</strong> to target .NET 8 SDK</li>
+  <li><strong>Review breaking changes</strong> in the migration guide</li>
+  <li><strong>Enable Native AOT</strong> for applicable services</li>
+  <li><strong>Benchmark your application</strong> before and after migration</li>
+</ol>
+
+<hr />
+
+<p>The .NET ecosystem continues to evolve at a remarkable pace. With .NET 8, Microsoft has delivered a release that’s not just faster and smaller, but genuinely more pleasant to work with. Whether you’re building APIs, desktop apps, or cloud-native services, this release has something meaningful for you.</p>
+
+<p><em>Stay tuned for more deep dives into specific .NET 8 features in upcoming articles.</em></p>]]></content><author><name>Bs DotNet</name></author><category term="dotnet" /><category term="dotnet" /><category term="csharp" /><category term="performance" /><category term="web-development" /><summary type="html"><![CDATA[A comprehensive overview of the latest features in .NET 8, including performance improvements, native AOT, and new APIs.]]></summary></entry><entry><title type="html">Essential Security Headers Every Web Developer Should Implement</title><link href="http://localhost:4000/Articles/articles/essential-security-headers-web-developers/" rel="alternate" type="text/html" title="Essential Security Headers Every Web Developer Should Implement" /><published>2026-03-01T00:00:00+02:00</published><updated>2026-03-01T00:00:00+02:00</updated><id>http://localhost:4000/Articles/articles/essential-security-headers-web-developers</id><content type="html" xml:base="http://localhost:4000/Articles/articles/essential-security-headers-web-developers/"><![CDATA[<p>Security headers are one of the simplest yet most overlooked defenses in web application security. A few lines of configuration can protect your users from XSS, clickjacking, MIME-type attacks, and more.</p>
+
+<p>Let’s walk through the headers every web application should have.</p>
+
+<h2 id="content-security-policy-csp">Content-Security-Policy (CSP)</h2>
+
+<p>CSP is your strongest defense against XSS attacks. It tells the browser exactly which sources of content are allowed:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'
+</code></pre></div></div>
+
+<h3 id="implementation-in-aspnet-core">Implementation in ASP.NET Core</h3>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">next</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span>
+        <span class="s">"Content-Security-Policy"</span><span class="p">,</span>
+        <span class="s">"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"</span>
+    <span class="p">);</span>
+    <span class="k">await</span> <span class="nf">next</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Start strict, then relax.</strong> Begin with <code class="language-plaintext highlighter-rouge">default-src 'none'</code> and add sources as needed. This is far safer than starting permissive.</p>
+</blockquote>
+
+<h2 id="strict-transport-security-hsts">Strict-Transport-Security (HSTS)</h2>
+
+<p>Forces browsers to use HTTPS for all future requests:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+</code></pre></div></div>
+
+<h2 id="x-content-type-options">X-Content-Type-Options</h2>
+
+<p>Prevents browsers from MIME-type sniffing:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X-Content-Type-Options: nosniff
+</code></pre></div></div>
+
+<h2 id="referrer-policy">Referrer-Policy</h2>
+
+<p>Controls how much referrer information is sent with requests:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Referrer-Policy: strict-origin-when-cross-origin
+</code></pre></div></div>
+
+<h2 id="permissions-policy">Permissions-Policy</h2>
+
+<p>Restricts which browser features your site can use:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+</code></pre></div></div>
+
+<h2 id="testing-your-headers">Testing Your Headers</h2>
+
+<p>Use these tools to audit your security headers:</p>
+
+<ol>
+  <li><strong><a href="https://securityheaders.com">securityheaders.com</a></strong> — Free scanner with grading</li>
+  <li><strong>Browser DevTools</strong> — Network tab → Response Headers</li>
+  <li><strong>curl</strong> — <code class="language-plaintext highlighter-rouge">curl -I https://yoursite.com</code></li>
+</ol>
+
+<hr />
+
+<p>Security headers are a low-effort, high-impact security measure. Implement them today, and you’ll have eliminated several entire classes of attacks with minimal code changes.</p>
+
+<p><em>Next article: Deep dive into Content Security Policy — reporting, nonces, and handling third-party scripts.</em></p>]]></content><author><name>Bs DotNet</name></author><category term="cybersecurity" /><category term="security" /><category term="web-development" /><category term="headers" /><category term="best-practices" /><summary type="html"><![CDATA[A practical guide to HTTP security headers that protect your web applications from common attacks.]]></summary></entry></feed>
